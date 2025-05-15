@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="sidebar">
-    <div class="logo">The Secret Garden</div>
+    <div class="logo"><img src="uploads/logo.png" alt="The Secret Garden"></div>
     <div class="menu-label">MENU</div>
     <ul class="menu-items">
         

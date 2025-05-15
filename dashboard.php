@@ -12,12 +12,12 @@
     <div class="container">
         <div class="sidebar">
           
-    <div class="logo">The Secret Garden</div>
+    <div class="logo"><img src="uploads/logo.png" alt="The Secret Garden"></div>
     <div class="menu-label">MENU</div>
     <ul class="menu-items">
         
         <li>
-        <a class="menu-item" onclick="location.href='dashboard.php'">
+        <a class="menu-item active" onclick="location.href='dashboard.php'">
                 <i class="fas fa-tachometer-alt"></i>
                 <span>Dashboard</span>
                 </a>
@@ -332,14 +332,14 @@
                 {
                   label: 'Pendapatan',
                   data: [15, 25, 20, 10],
-                  backgroundColor: '#e5cb00',
+                  backgroundColor: '#ffb6c1',
                   borderRadius: 20,
                   borderSkipped: false,
                 },
                 {
                   label: 'Target',
                   data: [20, 30, 35, 25],
-                  backgroundColor: '#003d0b',
+                  backgroundColor: '#4a7c59',
                   borderRadius: 20,
                   borderSkipped: false,
                 }
@@ -376,8 +376,8 @@
                 {
                   label: 'Penjualan',
                   data: [10, 25, 45, 60],
-                  borderColor: '#273240',
-                  backgroundColor: '#273240',
+                  borderColor: '#4a7c59',
+                  backgroundColor: '#4a7c59',
                   tension: 0.4,
                   fill: false,
                 }
@@ -418,7 +418,7 @@
               datasets: [
                 {
                   data: [70, 30],
-                  backgroundColor: ['#e5cb00', '#003d0b'],
+                  backgroundColor: ['#ffb6c1', '#4a7c59'],
                   borderWidth: 0,
                 }
               ]

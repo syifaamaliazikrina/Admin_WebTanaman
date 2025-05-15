@@ -10,59 +10,56 @@
 <body>
 
 <div class="sidebar">
-    <div class="logo">The Secret Garden</div>
+    <div class="logo"><img src="uploads/logo.png" alt="The Secret Garden"></div>
     <div class="menu-label">MENU</div>
     <ul class="menu-items">
+        
         <li>
-            <a href="dashboard.html" class="menu-item">
-                <i class="icon">📊</i>
-                Dashboard
-            </a>
+        <a class="menu-item active" onclick="location.href='dashboard.php'">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+                </a>
         </li>
         <li>
-            <a href="manajemen_pesanan.html" class="menu-item">
-                <i class="icon">🛒</i>
-                Management Pesanan
-            </a>
+        <a class="menu-item" onclick="location.href='manajemen_pesanan.php'">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Management Pesanan</span>
+                </a>
         </li>
         <li>
-            <a href="manajemen_produk.html" class="menu-item active">
-                <i class="icon">📦</i>
-                Management Produk
-            </a>
+        <a class="menu-item" onclick="location.href='manajemen_produk.php'">
+                <i class="fas fa-box"></i>
+                <span>Management Produk</span>
+                </a>
         </li>
         <li>
-            <a href="manajemen_pengiriman.html" class="menu-item">
-                <i class="icon">🚚</i>
-                Management Pengiriman
-            </a>
+        <a class="menu-item" onclick="location.href='manajemen_pengiriman.php'">
+                <i class="fas fa-truck"></i>
+               <span>Management Pengiriman</span> </a>  
         </li>
         <li>
-            <a href="manajemen_akun.html" class="menu-item">
-                <i class="icon">👤</i>
-                Management Akun
-            </a>
+            <a class="menu-item" onclick="location.href='manajemen_akun.php'">
+                <i class="fas fa-user"></i>
+                <span>Management Akun</span> </a>
         </li>
         <li>
-            <a href="manajemen_admin.html" class="menu-item">
-                <i class="icon">👑</i>
-                Management Admin
-            </a>
+        <a class="menu-item" onclick="location.href='manajemen_admin.php'">
+                <i class="fas fa-user-shield"></i>
+                <span>Management Admin</span></a>
         </li>
         <li>
-            <a href="manajemen_diskon.html" class="menu-item">
-                <i class="icon">🏷️</i>
-                Management Diskon
-            </a>
+            <a class="menu-item " onclick="location.href='manajemen_pembayaran.php'">
+            <i class="fas fa-percent"></i>
+            <span>Management Pembayaran</span></a>
         </li>
         <li>
-            <a href="manajemen_pembayaran.php" class="menu-item">
-                <i class="icon">💰</i>
-                Management Pembayaran
-            </a>
+            <a class="menu-item " onclick="location.href='manajemen_diskon.php'">
+            <i class="fas fa-percent"></i>
+            <span>Management diskon</span></a>
         </li>
-    </ul>
-</div>
+     </ul>
+ </div>
+   
 
         <div class="main-content">
             <div class="header">

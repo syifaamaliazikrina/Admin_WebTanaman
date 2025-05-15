@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="sidebar">
-    <div class="logo">The Secret Garden</div>
+    <div class="logo"><img src="uploads/logo.png" alt="The Secret Garden"></div>
     <div class="menu-label">MENU</div>
     <ul class="menu-items">
         
@@ -78,37 +78,37 @@
 
         <?php
         include "koneksi.php";
-        $sql= "SELECT * FROM pelanggan";
+        $sql= "SELECT * FROM admin";
         $query= mysqli_query($koneksi,$sql);
 
 ?>
 
         <div class="content">
-            <h2 class="content-title">Management Akun</h2>
+            <h2 class="content-title">Management Admin</h2>
             
             <div class="data-table">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Id Pelanggan</th>
+                            <th>Id Admin</th>
                             <th>Username</th>
                             <th>Email</th>
                             <th>Password</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr>
                     
-        <?php while($pelanggan=mysqli_fetch_assoc($query)) { ?>
-            <td><?=$pelanggan['id_pelanggan']?></td>
-            <td><?=$pelanggan['username']?></td>
-            <td><?=$pelanggan['email']?></td>
-            <td><?=$pelanggan['password']?></td>
+        <?php while($admin=mysqli_fetch_assoc($query)) { ?>
+            <td><?=$admin['id_admin']?></td>
+            <td><?=$admin['username']?></td>
+            <td><?=$admin['email']?></td>
+            <td><?=$admin['password']?></td>
                             <td class="action-buttons">
-                            <a href="hapus_akun.php?id_pelanggan=<?=$pelanggan['id_pelanggan']?>" class="btn-delete">
-                                    <i class="fas fa-trash"></i></a>
-                            </td>
+                                <!-- <button class="btn-edit"><i class="fas fa-check"></i></button> -->
+                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                         <?php } ?>
