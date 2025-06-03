@@ -3,126 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manajemen Pembayaran</title>
-    <link rel="stylesheet" href="pembayaran.css">
+    <title>Management Admin - The Secret Garden</title>
+    <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<div class="sidebar">
-    <div class="logo"><img src="uploads/logo.png" alt="The Secret Garden"></div>
-    <div class="menu-label">MENU</div>
-    <ul class="menu-items">
-        
-        <li>
-        <a class="menu-item" onclick="location.href='dashboard.php'">
-                <i class="fas fa-tachometer-alt"></i>
-                <span>Dashboard</span>
-                </a>
-        </li>
-        <li>
-        <a class="menu-item" onclick="location.href='manajemen_pesanan.php'">
-                <i class="fas fa-shopping-cart"></i>
-                <span>Management Pesanan</span>
-                </a>
-        </li>
-        <li>
-        <a class="menu-item" onclick="location.href='manajemen_produk.php'">
-                <i class="fas fa-box"></i>
-                <span>Management Produk</span>
-                </a>
-        </li>
-        <li>
-        <a class="menu-item" onclick="location.href='manajemen_pengiriman.php'">
-                <i class="fas fa-truck"></i>
-               <span>Management Pengiriman</span> </a>  
-        </li>
-        <li>
-            <a class="menu-item" onclick="location.href='manajemen_akun.php'">
-                <i class="fas fa-user"></i>
-                <span>Management Akun</span> </a>
-        </li>
-        <li>
-        <a class="menu-item" onclick="location.href='manajemen_admin.php'">
-                <i class="fas fa-user-shield"></i>
-                <span>Management Admin</span></a>
-        </li>
-        <li>
-            <a class="menu-item " onclick="location.href='manajemen_pembayaran.php'">
-            <i class="fas fa-percent"></i>
-            <span>Management Pembayaran</span></a>
-        </li>
-        <li>
-            <a class="menu-item " onclick="location.href='manajemen_diskon.php'">
-            <i class="fas fa-percent"></i>
-            <span>Management diskon</span></a>
-        </li>
-        <li>
-            <a class="menu-item " onclick="location.href='manajemen_saran.php'">
-            <i class="fas fa-heart"></i>
-            <span>Management Saran</span></a>
-        </li>
-     </ul>
- </div>
-
-    <div class="main-content">
-        <div class="header">
-            <div class="search-bar">
-                <input type="text" placeholder="Search">
-                <button><i class="fas fa-search"></i></button>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="logo.png" alt="The Secret Garden">
+                <h3>The Secret Garden</h3>
             </div>
-            <div class="user-profile">
-                <span>Admin</span>
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Admin Profile">
-            </div>
+            
+            <div class="menu-label">MENU</div>
+            <ul class="menu-items">
+                <li>
+                    <a href="dashboard.html" class="menu-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manajemen_pesanan.html" class="menu-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Management Pesanan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manajemen_produk.html" class="menu-item">
+                        <i class="fas fa-box"></i>
+                        <span>Management Produk</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manajemen_pengiriman.html" class="menu-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Management Pengiriman</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manajemen_akun.html" class="menu-item">
+                        <i class="fas fa-user"></i>
+                        <span>Management Akun</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manajemen_admin.html" class="menu-item active">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Management Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manajemen_pembayaran.html" class="menu-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Management Pembayaran</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manajemen_diskon.html" class="menu-item">
+                        <i class="fas fa-percent"></i>
+                        <span>Management Diskon</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manajemen_saran.html" class="menu-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Management Saran</span>
+                    </a>
+                </li>
+            </ul>
         </div>
 
-        <?php
-        include "koneksi.php";
-        $sql= "SELECT * FROM admin";
-        $query= mysqli_query($koneksi,$sql);
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="user-menu">
+                    <span>Admin</span>
+                    <div class="profile-pic">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Admin Profile">
+                    </div>
+                </div>
+            </div>
 
-?>
+            <!-- Dashboard Title -->
+            <h1 class="dashboard-title">
+                <i class="fas fa-user-shield"></i>
+                Management Admin
+            </h1>
 
-        <div class="content">
-            <h2 class="content-title">Management Admin</h2>
-            
-            <div class="data-table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Id Admin</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
+            <!-- Data Table -->
+            <div class="table-container">
+                <div class="table-header">
+                    <i class="fas fa-user-shield"></i>
+                    Data Admin
+                </div>
+                
+                <div class="table-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID Admin</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Aksi</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
-                    
-        <?php while($admin=mysqli_fetch_assoc($query)) { ?>
-            <td><?=$admin['id_admin']?></td>
-            <td><?=$admin['username']?></td>
-            <td><?=$admin['email']?></td>
-            <td><?=$admin['password']?></td>
-                            <td class="action-buttons">
-                                <!-- <button class="btn-edit"><i class="fas fa-check"></i></button> -->
-                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                  
-                </table>
-                
-            </div><br><br>
-            
-     </button>
-</div>
+                                <td>1</td>
+                                <td>admin1</td>
+                                <td>admin1@secretgarden.com</td>
+                                <td>********</td>
+                                <td class="action-buttons">
+                                    <button class="btn-edit" title="Edit Admin">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete Admin">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>admin2</td>
+                                <td>admin2@secretgarden.com</td>
+                                <td>********</td>
+                                <td class="action-buttons">
+                                    <button class="btn-edit" title="Edit Admin">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete Admin">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>admin3</td>
+                                <td>admin3@secretgarden.com</td>
+                                <td>********</td>
+                                <td class="action-buttons">
+                                    <button class="btn-edit" title="Edit Admin">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete Admin">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>superadmin</td>
+                                <td>superadmin@secretgarden.com</td>
+                                <td>********</td>
+                                <td class="action-buttons">
+                                    <button class="btn-edit" title="Edit Admin">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete Admin">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
+            <!-- Add Admin Button -->
+            <div class="add-admin-section">
+                <button class="btn-add-admin">
+                    <i class="fas fa-plus"></i>
+                    Tambah Admin Baru
+                </button>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p>&copy; 2024 The Secret Garden. All rights reserved.</p>
+            </div>
         </div>
     </div>
-    
+
+    <script src="script.js"></script>
 </body>
 </html>

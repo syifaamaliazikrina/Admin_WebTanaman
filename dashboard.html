@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - The Secret Garden</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="images/logo.png" alt="The Secret Garden Logo">
+            </div>
+            
+            <div class="menu-label">MENU UTAMA</div>
+            <ul class="menu-items">
+                <li><a href="dashboard.html" class="menu-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a></li>
+                <li><a href="pesanan.html" class="menu-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Manajemen Pesanan</span>
+                </a></li>
+                <li><a href="customer.html" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>Manajemen Customer</span>
+                </a></li>
+                <li><a href="produk.html" class="menu-item">
+                    <i class="fas fa-box"></i>
+                    <span>Manajemen Produk</span>
+                </a></li>
+                <li><a href="pengiriman.html" class="menu-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Manajemen Pengiriman</span>
+                </a></li>
+                <li><a href="pembayaran.html" class="menu-item">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Manajemen Pembayaran</span>
+                </a></li>
+                <li><a href="admin.html" class="menu-item">
+                    <i class="fas fa-user-shield"></i>
+                    <span>Manajemen Admin</span>
+                </a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="search-container">
+                    <input type="text" placeholder="Cari pesanan, customer, produk..." class="search-input" id="searchInput">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="user-menu">
+                    <span>Admin</span>
+                    <div class="notification">
+                        <i class="fas fa-bell" style="color: #667eea;"></i>
+                        <div class="notification-badge"></div>
+                    </div>
+                    <div class="profile-pic">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="dashboard-title">
+                <i class="fas fa-chart-line"></i>
+                Dashboard Overview
+            </h1>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3><i class="fas fa-shopping-cart"></i> Total Pesanan</h3>
+                    <p class="value">1,250</p>
+                    <p class="info"><i class="fas fa-arrow-up"></i> +12% dari bulan lalu</p>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-users"></i> Total Customer</h3>
+                    <p class="value">890</p>
+                    <p class="info"><i class="fas fa-arrow-up"></i> +8% dari bulan lalu</p>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-box"></i> Total Produk</h3>
+                    <p class="value">156</p>
+                    <p class="info"><i class="fas fa-arrow-up"></i> +5% dari bulan lalu</p>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> Total Revenue</h3>
+                    <p class="value">Rp 45,231,890</p>
+                    <p class="info"><i class="fas fa-arrow-up"></i> +15% dari bulan lalu</p>
+                </div>
+            </div>
+
+            <!-- Tables Grid -->
+            <div class="content-grid">
+                <!-- Recent Orders -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <i class="fas fa-shopping-cart"></i> Pesanan Terbaru
+                    </div>
+                    <div class="table-content">
+                        <table id="ordersTable">
+                            <thead>
+                                <tr>
+                                    <th>ID Pesanan</th>
+                                    <th>Customer</th>
+                                    <th>Produk</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>ORD001</strong></td>
+                                    <td>Nanjo</td>
+                                    <td>Calathea Orbifolia</td>
+                                    <td><strong>Rp 45,000</strong></td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD002</strong></td>
+                                    <td>Cahyanda</td>
+                                    <td>Pink Rose</td>
+                                    <td><strong>Rp 50,000</strong></td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD003</strong></td>
+                                    <td>Haerin</td>
+                                    <td>Calathea Roseopicta</td>
+                                    <td><strong>Rp 50,000</strong></td>
+                                    <td><span class="status processing">Processing</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD004</strong></td>
+                                    <td>Kassandra</td>
+                                    <td>Monstera Deliciosa</td>
+                                    <td><strong>Rp 75,000</strong></td>
+                                    <td><span class="status shipped">Shipped</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ORD005</strong></td>
+                                    <td>Kairi</td>
+                                    <td>Fiddle Leaf Fig</td>
+                                    <td><strong>Rp 120,000</strong></td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent Customers -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <i class="fas fa-users"></i> Customer Terbaru
+                    </div>
+                    <div class="table-content">
+                        <table id="customersTable">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Pesanan</th>
+                                    <th>Total Belanja</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Nanjo</strong></td>
+                                    <td>nanjo87@gmail.com</td>
+                                    <td><span class="status completed">5</span></td>
+                                    <td><strong>Rp 225,000</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cahyanda</strong></td>
+                                    <td>yanda23@gmail.com</td>
+                                    <td><span class="status completed">3</span></td>
+                                    <td><strong>Rp 150,000</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Haerin</strong></td>
+                                    <td>haerin8@gmail.com</td>
+                                    <td><span class="status completed">7</span></td>
+                                    <td><strong>Rp 350,000</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Kassandra</strong></td>
+                                    <td>kassacc@gmail.com</td>
+                                    <td><span class="status completed">2</span></td>
+                                    <td><strong>Rp 100,000</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Kairi</strong></td>
+                                    <td>kairi5@gmail.com</td>
+                                    <td><span class="status completed">4</span></td>
+                                    <td><strong>Rp 280,000</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Products -->
+            <div class="table-container">
+                <div class="table-header">
+                    <i class="fas fa-star"></i> Produk Terlaris
+                </div>
+                <div class="table-content">
+                    <table id="productsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama Produk</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Stok</th>
+                                <th>Terjual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1001</strong></td>
+                                <td>Calathea Orbifolia</td>
+                                <td>Tanaman Hias Daun</td>
+                                <td><strong>Rp 45,000</strong></td>
+                                <td><span class="status completed">25</span></td>
+                                <td><strong>150</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1002</strong></td>
+                                <td>Calathea Roseopicta</td>
+                                <td>Tanaman Hias Daun</td>
+                                <td><strong>Rp 50,000</strong></td>
+                                <td><span class="status completed">18</span></td>
+                                <td><strong>120</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1005</strong></td>
+                                <td>Pink Rose</td>
+                                <td>Tanaman Hias Bunga</td>
+                                <td><strong>Rp 50,000</strong></td>
+                                <td><span class="status completed">30</span></td>
+                                <td><strong>95</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1008</strong></td>
+                                <td>Monstera Deliciosa</td>
+                                <td>Tanaman Hias Daun</td>
+                                <td><strong>Rp 75,000</strong></td>
+                                <td><span class="status processing">12</span></td>
+                                <td><strong>85</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1012</strong></td>
+                                <td>Fiddle Leaf Fig</td>
+                                <td>Tanaman Hias Daun</td>
+                                <td><strong>Rp 120,000</strong></td>
+                                <td><span class="status pending">8</span></td>
+                                <td><strong>65</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p>&copy; 2023 The Secret Garden. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
