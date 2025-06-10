@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,15 @@
 </head>
 <body>
     <div class="container">
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="logo">
-                <img src="logo.png" alt="The Secret Garden">
-                <h3>The Secret Garden</h3>
+                <img src="images/logo.png" alt="The Secret Garden">
             </div>
             
             <div class="menu-label">MENU</div>
@@ -25,49 +29,49 @@
                     </a>
                 </li>
                 <li>
-                    <a href="manajemen_pesanan.html" class="menu-item">
+                    <a href="manajemen-pesanan.html" class="menu-item">
                         <i class="fas fa-shopping-cart"></i>
                         <span>Management Pesanan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manajemen_produk.html" class="menu-item">
+                    <a href="manajemen-produk.html" class="menu-item">
                         <i class="fas fa-box"></i>
                         <span>Management Produk</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manajemen_pengiriman.html" class="menu-item">
+                    <a href="manajemen-pengiriman.html" class="menu-item">
                         <i class="fas fa-truck"></i>
                         <span>Management Pengiriman</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manajemen_akun.html" class="menu-item">
+                    <a href="manajemen-akun.html" class="menu-item">
                         <i class="fas fa-user"></i>
                         <span>Management Akun</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manajemen_admin.html" class="menu-item active">
+                    <a href="manajemen-admin.html" class="menu-item active">
                         <i class="fas fa-user-shield"></i>
                         <span>Management Admin</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manajemen_pembayaran.html" class="menu-item">
+                    <a href="manajemen-pembayaran.html" class="menu-item">
                         <i class="fas fa-credit-card"></i>
                         <span>Management Pembayaran</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manajemen_diskon.html" class="menu-item">
+                    <a href="manajemen-diskon.html" class="menu-item">
                         <i class="fas fa-percent"></i>
                         <span>Management Diskon</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manajemen_saran.html" class="menu-item">
+                    <a href="manajemen-saran.html" class="menu-item">
                         <i class="fas fa-heart"></i>
                         <span>Management Saran</span>
                     </a>
@@ -80,7 +84,7 @@
             <!-- Header -->
             <div class="header">
                 <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search...">
+                    <input type="text" class="search-input" placeholder="Cari admin..." id="searchInput">
                     <button class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
@@ -88,8 +92,12 @@
                 
                 <div class="user-menu">
                     <span>Admin</span>
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <div class="notification-badge"></div>
+                    </div>
                     <div class="profile-pic">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Admin Profile">
+                        <img src="images/4396a60b-6455-40ed-8331-89a96395469f.jpeg" alt="Admin Profile">
                     </div>
                 </div>
             </div>
@@ -100,6 +108,20 @@
                 Management Admin
             </h1>
 
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3><i class="fas fa-user-shield"></i> Total Admin</h3>
+                    <p class="value">4</p>
+                    <p class="info"><i class="fas fa-arrow-up"></i> Aktif semua</p>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-user-plus"></i> Admin Baru</h3>
+                    <p class="value">0</p>
+                    <p class="info"><i class="fas fa-minus"></i> Bulan ini</p>
+                </div>
+            </div>
+
             <!-- Data Table -->
             <div class="table-container">
                 <div class="table-header">
@@ -108,69 +130,86 @@
                 </div>
                 
                 <div class="table-content">
-                    <table class="table">
+                    <table class="table" id="adminTable">
                         <thead>
                             <tr>
                                 <th>ID Admin</th>
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Password</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
+                                <td><strong>001</strong></td>
                                 <td>admin1</td>
                                 <td>admin1@secretgarden.com</td>
-                                <td>********</td>
-                                <td class="action-buttons">
-                                    <button class="btn-edit" title="Edit Admin">
+                                <td>••••••••</td>
+                                <td><span class="status completed">Aktif</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Edit Admin" onclick="editAdmin(1)">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn-delete" title="Delete Admin">
+                                    <button class="btn-icon" title="Reset Password" onclick="resetPassword(1)">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete Admin" onclick="deleteAdmin(1, 'admin1')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>2</td>
+                                <td><strong>002</strong></td>
                                 <td>admin2</td>
                                 <td>admin2@secretgarden.com</td>
-                                <td>********</td>
-                                <td class="action-buttons">
-                                    <button class="btn-edit" title="Edit Admin">
+                                <td>••••••••</td>
+                                <td><span class="status completed">Aktif</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Edit Admin" onclick="editAdmin(2)">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn-delete" title="Delete Admin">
+                                    <button class="btn-icon" title="Reset Password" onclick="resetPassword(2)">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete Admin" onclick="deleteAdmin(2, 'admin2')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>3</td>
+                                <td><strong>003</strong></td>
                                 <td>admin3</td>
                                 <td>admin3@secretgarden.com</td>
-                                <td>********</td>
-                                <td class="action-buttons">
-                                    <button class="btn-edit" title="Edit Admin">
+                                <td>••••••••</td>
+                                <td><span class="status completed">Aktif</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Edit Admin" onclick="editAdmin(3)">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn-delete" title="Delete Admin">
+                                    <button class="btn-icon" title="Reset Password" onclick="resetPassword(3)">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete Admin" onclick="deleteAdmin(3, 'admin3')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>4</td>
+                                <td><strong>004</strong></td>
                                 <td>superadmin</td>
                                 <td>superadmin@secretgarden.com</td>
-                                <td>********</td>
-                                <td class="action-buttons">
-                                    <button class="btn-edit" title="Edit Admin">
+                                <td>••••••••</td>
+                                <td><span class="status completed">Aktif</span></td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Edit Admin" onclick="editAdmin(4)">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn-delete" title="Delete Admin">
+                                    <button class="btn-icon" title="Reset Password" onclick="resetPassword(4)">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button class="btn-delete" title="Delete Admin" onclick="deleteAdmin(4, 'superadmin')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
@@ -182,7 +221,7 @@
 
             <!-- Add Admin Button -->
             <div class="add-admin-section">
-                <button class="btn-add-admin">
+                <button class="btn-add-admin" onclick="showAddModal()">
                     <i class="fas fa-plus"></i>
                     Tambah Admin Baru
                 </button>
@@ -195,6 +234,205 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Modal untuk tambah/edit admin -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Tambah Admin Baru</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="adminForm">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Konfirmasi Password:</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role:</label>
+                        <select id="role" name="role" required>
+                            <option value="admin">Admin</option>
+                            <option value="superadmin">Super Admin</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">Batal</button>
+                <button type="button" class="btn btn-primary" onclick="saveAdmin()">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data admin untuk simulasi
+        let admins = [
+            {id: 1, username: 'admin1', email: 'admin1@secretgarden.com', password: 'admin123', role: 'admin'},
+            {id: 2, username: 'admin2', email: 'admin2@secretgarden.com', password: 'admin456', role: 'admin'},
+            {id: 3, username: 'admin3', email: 'admin3@secretgarden.com', password: 'admin789', role: 'admin'},
+            {id: 4, username: 'superadmin', email: 'superadmin@secretgarden.com', password: 'super123', role: 'superadmin'}
+        ];
+
+        // Toggle sidebar untuk mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+
+        // Inisialisasi fitur
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSearch();
+            initializeResponsiveMenu();
+        });
+        
+        // Fungsi pencarian
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                filterTable(searchTerm);
+            });
+        }
+
+        // Filter tabel berdasarkan pencarian
+        function filterTable(searchTerm) {
+            const table = document.getElementById('adminTable');
+            const rows = table.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        
+        // Fungsi untuk menampilkan modal tambah admin
+        function showAddModal() {
+            document.getElementById('modalTitle').textContent = 'Tambah Admin Baru';
+            document.getElementById('adminForm').reset();
+            document.getElementById('adminModal').style.display = 'block';
+        }
+        
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+        
+        // Fungsi untuk edit admin
+        function editAdmin(id) {
+            const admin = admins.find(adm => adm.id === id);
+            if (admin) {
+                document.getElementById('modalTitle').textContent = 'Edit Admin';
+                document.getElementById('username').value = admin.username;
+                document.getElementById('email').value = admin.email;
+                document.getElementById('password').value = admin.password;
+                document.getElementById('confirm_password').value = admin.password;
+                document.getElementById('role').value = admin.role;
+                document.getElementById('adminModal').style.display = 'block';
+            }
+        }
+        
+        // Fungsi untuk reset password
+        function resetPassword(id) {
+            const admin = admins.find(adm => adm.id === id);
+            if (admin && confirm(`Apakah Anda yakin ingin mereset password untuk admin "${admin.username}"?`)) {
+                const newPassword = 'newpass' + Math.floor(Math.random() * 1000);
+                admin.password = newPassword;
+                alert(`Password berhasil direset!\nPassword baru: ${newPassword}\n\nPassword baru telah dikirim ke email ${admin.email}`);
+            }
+        }
+        
+        // Fungsi untuk hapus admin
+        function deleteAdmin(id, username) {
+            if (confirm(`Apakah Anda yakin ingin menghapus admin "${username}"?\n\nTindakan ini tidak dapat dibatalkan!`)) {
+                // Hapus dari array
+                admins = admins.filter(adm => adm.id !== id);
+                
+                // Hapus dari tabel
+                const table = document.getElementById('adminTable');
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const idCell = row.querySelector('td:first-child strong');
+                    if (idCell && idCell.textContent.padStart(3, '0') === id.toString().padStart(3, '0')) {
+                        row.remove();
+                    }
+                });
+                
+                alert(`Admin "${username}" berhasil dihapus!`);
+            }
+        }
+        
+        // Fungsi untuk menyimpan admin
+        function saveAdmin() {
+            const form = document.getElementById('adminForm');
+            
+            // Validasi password
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            
+            if (password !== confirmPassword) {
+                alert('Password dan konfirmasi password tidak sama!');
+                return;
+            }
+            
+            // Validasi email
+            const email = document.getElementById('email').value;
+            const emailExists = admins.some(adm => adm.email === email);
+            if (emailExists) {
+                alert('Email sudah terdaftar!');
+                return;
+            }
+            
+            // Validasi username
+            const username = document.getElementById('username').value;
+            const usernameExists = admins.some(adm => adm.username === username);
+            if (usernameExists) {
+                alert('Username sudah digunakan!');
+                return;
+            }
+            
+            alert('Admin berhasil disimpan!');
+            closeModal();
+        }
+        
+        // Fungsi menu responsif
+        function initializeResponsiveMenu() {
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                
+                if (window.innerWidth <= 768 && 
+                    !sidebar.contains(event.target) && 
+                    !menuBtn.contains(event.target) &&
+                    sidebar.classList.contains('show')) {
+                    sidebar.classList.remove('show');
+                }
+            });
+        }
+        
+        // Tutup modal jika klik di luar modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('adminModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>

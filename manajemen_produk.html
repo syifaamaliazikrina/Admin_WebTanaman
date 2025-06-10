@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manajemen Pembayaran</title>
-    <link rel="stylesheet" href="pembayaran.css">
+    <link rel="stylesheet" href="css/manajemen_diskon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -78,58 +78,65 @@
 
         <?php
         include "koneksi.php";
-        $sql= "SELECT * FROM pesanan";
+        $sql= "SELECT * FROM produk";
         $query= mysqli_query($koneksi,$sql);
 
 ?>
 
         <div class="content">
-            <h2 class="content-title">Management Pesanan</h2>
             
+            <h2 class="content-title">Management Produk</h2>
+            <div class="add-button-container">
+            <button class="btn-tambah" onclick="window.location.href='produk.php'">
+        + Tambah Produk
+     </button> </div> 
             <div class="data-table">
+                
                 <table class="table">
+                    
                     <thead>
                         <tr>
-                            <th>Id Pesanan</th>
-                            <th>Id Pelanggan</th>
-                            <th>id Produk</th>
-                            <th>Alamat</th>
-                            <th>Tanggal</th>
-                            <th>NO HP</th>
-                            <th>Jumlah</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
+                            <th>Id Produk</th>
+                            <th>Nama Tanaman</th>
+                            <th>Gambar</th>
+                            <th>Kategori</th>
+                            <th>Harga</th>
+                            <th>Stok</th>
+                            <th>Deskripsi</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr>
                     
-        <?php while($pesanan=mysqli_fetch_assoc($query)) { ?>
-            <td><?=$pesanan['id_pesanan']?></td>
-            <td><?=$pesanan['id_pelanggan']?></td>
-            <td><?=$pesanan['id_produk']?></td>
-            <td><?=$pesanan['alamat']?></td>
-            <td><?=$pesanan['tgl_pesanan']?></td>
-            <td><?=$pesanan['no_hp']?></td>
-            <td><?=$pesanan['jumlah']?></td>
-            <td><?=$pesanan['status_pesanan']?></td>
+        <?php while($produk=mysqli_fetch_assoc($query)) { ?>
+             
+            <td><?=$produk['id_produk']?></td>
+            <td><?=$produk['nama_tanaman']?></td>
+            <td><img src="uploads/<?=$produk['foto']?>"style="max-width:150px; height:100px;">
+            </td>  
+            <td><?=$produk['kategori']?></td>
+            <td><?=$produk['harga']?></td>
+            <td><?=$produk['stok']?></td>
+            <td><?=$produk['deskripsi']?></td>
+              
                             <td class="action-buttons">
-                                <!-- <button class="btn-edit"><i class="fas fa-check"></i></button> -->
-                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            
+                            <a href="edit_produk.php?id_produk=<?=$produk['id_produk']?>" class="btn-edit">
+                                <i class="fas fa-pencil"></i></a>
+                          
+                            <a href="hapus_produk.php?id_produk=<?=$produk['id_produk']?>" class="btn-delete">
+                                    <i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
-                        <?php } ?>
                     </tbody>
-                  
+                    <?php } ?>
                 </table>
                 
-            </div><br><br>
+            </div>
             
-     </button>
 </div>
-
         </div>
     </div>
-    
 </body>
 </html>

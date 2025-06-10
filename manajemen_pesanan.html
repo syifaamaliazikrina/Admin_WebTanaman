@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Pembayaran</title>
+    <link rel="stylesheet" href="css/manajemen_pesanan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo"><img src="uploads/logo.png" alt="The Secret Garden"></div>
+    <div class="menu-label">MENU</div>
+    <ul class="menu-items">
+        
+        <li>
+        <a class="menu-item" onclick="location.href='dashboard.php'">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+                </a>
+        </li>
+        <li>
+        <a class="menu-item" onclick="location.href='manajemen_pesanan.php'">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Management Pesanan</span>
+                </a>
+        </li>
+        <li>
+        <a class="menu-item" onclick="location.href='manajemen_produk.php'">
+                <i class="fas fa-box"></i>
+                <span>Management Produk</span>
+                </a>
+        </li>
+        <li>
+        <a class="menu-item" onclick="location.href='manajemen_pengiriman.php'">
+                <i class="fas fa-truck"></i>
+               <span>Management Pengiriman</span> </a>  
+        </li>
+        <li>
+            <a class="menu-item" onclick="location.href='manajemen_akun.php'">
+                <i class="fas fa-user"></i>
+                <span>Management Akun</span> </a>
+        </li>
+        <li>
+        <a class="menu-item" onclick="location.href='manajemen_admin.php'">
+                <i class="fas fa-user-shield"></i>
+                <span>Management Admin</span></a>
+        </li>
+        <li>
+            <a class="menu-item " onclick="location.href='manajemen_pembayaran.php'">
+            <i class="fas fa-percent"></i>
+            <span>Management Pembayaran</span></a>
+        </li>
+        <li>
+            <a class="menu-item " onclick="location.href='manajemen_diskon.php'">
+            <i class="fas fa-percent"></i>
+            <span>Management diskon</span></a>
+        </li>
+        <li>
+            <a class="menu-item " onclick="location.href='manajemen_saran.php'">
+            <i class="fas fa-heart"></i>
+            <span>Management Saran</span></a>
+        </li>
+     </ul>
+ </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-profile">
+                <span>Admin</span>
+                <img src="images/4396a60b-6455-40ed-8331-89a96395469f.jpeg" alt="Admin Profile">
+            </div>
+        </div>
+
+        <?php
+        include "koneksi.php";
+        $sql= "SELECT * FROM pesanan";
+        $query= mysqli_query($koneksi,$sql);
+
+?>
+
+        <div class="content">
+            <h2 class="content-title">Management Pesanan</h2>
+            
+            <div class="data-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id Pesanan</th>
+                            <th>Id Pelanggan</th>
+                            <th>id Produk</th>
+                            <th>Alamat</th>
+                            <th>Tanggal</th>
+                            <th>NO HP</th>
+                            <th>Jumlah</th>
+                            <th>Status</th>
+                            <th>Update Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                    
+        <?php while($pesanan=mysqli_fetch_assoc($query)) { ?>
+            <td><?=$pesanan['id_pesanan']?></td>
+            <td><?=$pesanan['id_pelanggan']?></td>
+            <td><?=$pesanan['id_produk']?></td>
+            <td><?=$pesanan['alamat']?></td>
+            <td><?=$pesanan['tgl_pesanan']?></td>
+            <td><?=$pesanan['no_hp']?></td>
+            <td><?=$pesanan['jumlah']?></td>
+            <td>
+                <span class="status-badge status-<?=strtolower(str_replace(' ', '-', $pesanan['status_pesanan']))?>"><?=$pesanan['status_pesanan']?></span>
+            </td>
+            <td class="status-update-cell">
+                <select class="status-select" id="status-<?=$pesanan['id_pesanan']?>">
+                    <option value="Menunggu Konfirmasi" <?=$pesanan['status_pesanan'] == 'Menunggu Konfirmasi' ? 'selected' : ''?>>Menunggu Konfirmasi</option>
+                    <option value="Dikonfirmasi" <?=$pesanan['status_pesanan'] == 'Dikonfirmasi' ? 'selected' : ''?>>Dikonfirmasi</option>
+                    <option value="Sedang Dikemas" <?=$pesanan['status_pesanan'] == 'Sedang Dikemas' ? 'selected' : ''?>>Sedang Dikemas</option>
+                    <option value="Menunggu Kurir" <?=$pesanan['status_pesanan'] == 'Menunggu Kurir' ? 'selected' : ''?>>Menunggu Kurir</option>
+                    <option value="Dalam Pengiriman" <?=$pesanan['status_pesanan'] == 'Dalam Pengiriman' ? 'selected' : ''?>>Dalam Pengiriman</option>
+                    <option value="Terkirim" <?=$pesanan['status_pesanan'] == 'Terkirim' ? 'selected' : ''?>>Terkirim</option>
+                    <option value="Selesai" <?=$pesanan['status_pesanan'] == 'Selesai' ? 'selected' : ''?>>Selesai</option>
+                    <option value="Dibatalkan" <?=$pesanan['status_pesanan'] == 'Dibatalkan' ? 'selected' : ''?>>Dibatalkan</option>
+                </select>
+                <button class="btn-update" onclick="updateStatus(<?=$pesanan['id_pesanan']?>)">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </td>
+                            <td class="action-buttons">
+                                <!-- <button class="btn-edit"><i class="fas fa-check"></i></button> -->
+                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                  
+                </table>
+                
+            </div><br><br>
+            
+     </button>
+</div>
+
+        </div>
+    </div>
+
+    <!-- Modal untuk konfirmasi update status -->
+    <div id="statusModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Konfirmasi Update Status</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin mengubah status pesanan ini?</p>
+                <div class="modal-info">
+                    <strong>ID Pesanan: </strong><span id="modalOrderId"></span><br>
+                    <strong>Status Baru: </strong><span id="modalNewStatus"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeModal()">Batal</button>
+                <button class="btn-confirm" onclick="confirmUpdate()">Konfirmasi</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentOrderId = null;
+        let currentNewStatus = null;
+
+        function updateStatus(orderId) {
+            const selectElement = document.getElementById('status-' + orderId);
+            const newStatus = selectElement.value;
+            
+            currentOrderId = orderId;
+            currentNewStatus = newStatus;
+            
+            document.getElementById('modalOrderId').textContent = orderId;
+            document.getElementById('modalNewStatus').textContent = newStatus;
+            document.getElementById('statusModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('statusModal').style.display = 'none';
+            currentOrderId = null;
+            currentNewStatus = null;
+        }
+
+        function confirmUpdate() {
+            if (currentOrderId && currentNewStatus) {
+                // Kirim request AJAX untuk update status
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'update_status.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            // Update status badge
+                            const statusCell = document.querySelector(`tr:has(#status-${currentOrderId}) .status-badge`);
+                            if (statusCell) {
+                                statusCell.textContent = currentNewStatus;
+                                statusCell.className = `status-badge status-${currentNewStatus.toLowerCase().replace(/\s+/g, '-')}`;
+                            }
+                            
+                            alert('Status berhasil diupdate!');
+                        } else {
+                            alert('Gagal mengupdate status: ' + response.message);
+                        }
+                        closeModal();
+                    }
+                };
+                
+                xhr.send(`id_pesanan=${currentOrderId}&status=${encodeURIComponent(currentNewStatus)}`);
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('statusModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with X button
+        document.querySelector('.close').onclick = function() {
+            closeModal();
+        }
+    </script>
+    
+</body>
+</html>
